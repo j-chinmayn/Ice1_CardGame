@@ -28,25 +28,22 @@ public class CardTrick {
             magicHand[i] = c;
         }
         
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please pick a number from 1 to 13: ");
-        int cardNum = scanner.nextInt();
-        System.out.println("Please pick 0-hearts, 1-diamonds, 2-spades, 3-clubs: ");
-        int cardShape = scanner.nextInt(); 
-        
-        Card guessCard = new Card();
-        guessCard.setValue(cardNum);
-        guessCard.setSuit(Card.SUITS[cardShape]);
-        
-        boolean corrCard = false;
         for (Card card: magicHand) {
-            if (card == guessCard) {
-                corrCard = true;
+            System.out.println(card);
+        }
+        Card luckyCard = new Card();
+        luckyCard.setValue(2);
+        luckyCard.setSuit("Hearts");
+        
+        boolean corrLuckyCard = false;
+        for (Card card: magicHand) {
+            if (card.equals(luckyCard)) {
+                corrLuckyCard = true;
                 break;
             }
         }
         
-        if (corrCard) {
+        if (corrLuckyCard) {
             System.out.println("Good guess");
         } else {
             System.out.println("Try again");
@@ -55,6 +52,7 @@ public class CardTrick {
         // and search magicHand here
         //Then report the result here
         // add one luckcard hard code 2,clubs
+        
     }
     
     private static int numGen() {
@@ -62,6 +60,6 @@ public class CardTrick {
     }
     private static int ranNumGen(int min, int max) {
         Random random = new Random();
-        return random.nextInt(max - min) + min;
+        return random.nextInt(max - min);
     }
 }
